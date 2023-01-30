@@ -1,10 +1,14 @@
 const{ Server } = require("socket.io");
-
-const io = new Server(8000, {
-  cors :{
-    origin :'wss://khan-pets-socket.vercel.app'
-  }
-});
+const http = require("http");
+const express = require("express");
+const app = express();
+// const io = new Server(8000, {
+//   cors :{
+//     origin :'wss://khan-pets-socket.vercel.app'
+//   }
+// });
+const server = http.createServer(app);
+const io = new Server(server)
 
 let users = [];
 
